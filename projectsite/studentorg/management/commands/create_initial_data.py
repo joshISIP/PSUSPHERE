@@ -16,17 +16,21 @@ class Command(BaseCommand):
         for _ in range(count):
             words = [self.fake.word() for _ in range(2)]
             organization_name = " ".join(words)
-            Organization.objects.create(
-                name=organization_name.title(),
-                college=College.objects.order_by('?').first(),
-                description=self.fake.sentence()
-            )
+            college = College.objects.order_by('?').first()
+            if college:
+                Organization.objects.create(
+                    name=organization_name.title(),
+                    college=college,
+                    description=self.fake.sentence()
+                )
+            else:
+                self.stdout.write(self.style.ERROR('No colleges found'))
         self.stdout.write(self.style.SUCCESS('Organizations created successfully'))
         
     def create_students(self, count):
         for _ in range(count):
             program = Program.objects.order_by('?').first()
-            if program is not None:
+            if program:
                 Student.objects.create(
                     student_id=f"{self.fake_ph.random_int(2020,2024)}-{self.fake_ph.random_int(1,8)}-{self.fake_ph.random_number(digits=4)}",
                     lastname=self.fake_ph.last_name(),
@@ -34,6 +38,8 @@ class Command(BaseCommand):
                     middlename=self.fake_ph.first_name(),
                     program=program
                 )
+            else:
+                self.stdout.write(self.style.ERROR('No programs found'))
         self.stdout.write(self.style.SUCCESS('Students created successfully'))
     
     def create_membership(self, count):
@@ -45,4 +51,9 @@ class Command(BaseCommand):
                     student=student,
                     organization=organization
                 )
+            else:
+                if not student:
+                    self.stdout.write(self.style.ERROR('No students found'))
+                if not organization:
+                    self.stdout.write(self.style.ERROR('No organizations found'))
         self.stdout.write(self.style.SUCCESS('Memberships created successfully'))
