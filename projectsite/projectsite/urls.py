@@ -1,11 +1,9 @@
 from django.contrib import admin
 from django.urls import path
-from django.http import HttpResponse
-
-def home(request):
-    return HttpResponse("Hello from Django on PythonAnywhere!")
+from studentorg.views import HomePageView
+from studentorg import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', home),
+    path("admin/", admin.site.urls),
+    path('', views.HomePageView.as_view(), name='home'),
 ]
