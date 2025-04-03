@@ -1,6 +1,8 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}PSUSphere{% endblock %}</title>
@@ -8,14 +10,15 @@
     <link rel="stylesheet" href="{% static 'css/ready.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/demo.css' %}">
 </head>
+
 <body>
     <div class="wrapper">
-
-        {% include "includes/sidebar.html" %}
+        <!-- Sidebar -->
+        {% include 'includes/sidebar.html' %}
 
         <div class="main-panel">
-            {% include "includes/navbar.html" %}
-
+            <!-- Navbar -->
+            {% include 'includes/navbar.html' %}
             <div class="content">
                 {% block content %}
                 {% endblock %}
@@ -24,16 +27,10 @@
     </div>
 
     <script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/plugin/jquery-ui.custom.min.js' %}"></script>
     <script src="{% static 'js/core/popper.min.js' %}"></script>
-    <script src="{% static 'js/core/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/plugin/chartist/chartist.min.js' %}"></script>
-    <script src="{% static 'js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js' %}"></script>
-    <script src="{% static 'js/plugin/bootstrap-notify/bootstrap-notify.min.js' %}"></script>
-    <script src="{% static 'js/plugin/bootstrap-toggle/bootstrap-toggle.min.js' %}"></script>
-    <script src="{% static 'js/plugin/jquery-mapael/jquery.mapael.min.js' %}"></script>
-    <script src="{% static 'js/plugin/jquery-mapael/maps/world_countries.min.js' %}"></script>
-    <script src="{% static 'js/plugin/chart-circle/circles.min.js' %}"></script>
-    <script src="{% static 'js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/ready.min.js' %}"></script>
 </body>
+
 </html>
