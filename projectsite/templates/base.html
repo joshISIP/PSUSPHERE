@@ -6,22 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title> {% block title %}PSSUPHERE{% endblock %}</title>
+    <title>{% block title %}PSSUPHERE{% endblock %}</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/ready.css' %}">
     <link rel="stylesheet" href="{% static 'css/demo.css' %}">
   </head>
   <body>
 
-    <div class="main-panel">
-      {% block content %}
-        <div id="content">
-          <!-- all codes in content div -->
+    <div class="wrapper">
+      <!-- Sidebar -->
+      {% include 'includes/sidebar.html' %}
+
+      <div class="main-panel">
+        <!-- Navbar -->
+        {% include 'includes/navbar.html' %}
+
+        <!-- Notifications -->
+        {% include 'includes/notifications.html' %}
+
+        <!-- Page Content -->
+        <div class="content">
+          {% block content %}
+          {% endblock %}
         </div>
-      {% endblock %}
+      </div>
     </div>
 
+    <!-- Footer scripts -->
     <script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
     <script src="{% static 'js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js' %}"></script>
     <script src="{% static 'js/core/popper.min.js' %}"></script>
@@ -35,6 +48,5 @@
     <script src="{% static 'js/plugin/chart-circle/circles.min.js' %}"></script>
     <script src="{% static 'js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
     <script src="{% static 'js/ready.min.js' %}"></script>
-
   </body>
 </html>
