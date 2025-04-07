@@ -1,36 +1,40 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}PSUSphere{% endblock %}</title>
+    <title> {% block title %}PSSUPHERE{% endblock %}</title>
+
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/ready.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ready.css' %}">
     <link rel="stylesheet" href="{% static 'css/demo.css' %}">
-</head>
+  </head>
+  <body>
 
-<body>
-    <div class="wrapper">
-        <!-- Sidebar -->
-        {% include 'includes/sidebar.html' %}
-
-        <div class="main-panel">
-            <!-- Navbar -->
-            {% include 'includes/navbar.html' %}
-            <div class="content">
-                {% block content %}
-                {% endblock %}
-            </div>
+    <div class="main-panel">
+      {% block content %}
+        <div id="content">
+          <!-- all codes in content div -->
         </div>
+      {% endblock %}
     </div>
 
     <script src="{% static 'js/core/jquery.3.2.1.min.js' %}"></script>
-    <script src="{% static 'js/plugin/jquery-ui.custom.min.js' %}"></script>
+    <script src="{% static 'js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js' %}"></script>
     <script src="{% static 'js/core/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/core/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/plugin/chartist/chartist.min.js' %}"></script>
+    <script src="{% static 'js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js' %}"></script>
+    <script src="{% static 'js/plugin/bootstrap-notify/bootstrap-notify.min.js' %}"></script>
+    <script src="{% static 'js/plugin/bootstrap-toggle/bootstrap-toggle.min.js' %}"></script>
+    <script src="{% static 'js/plugin/jquery-mapael/jquery.mapael.min.js' %}"></script>
+    <script src="{% static 'js/plugin/jquery-mapael/maps/world_countries.min.js' %}"></script>
+    <script src="{% static 'js/plugin/chart-circle/circles.min.js' %}"></script>
+    <script src="{% static 'js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
     <script src="{% static 'js/ready.min.js' %}"></script>
-</body>
 
+  </body>
 </html>
