@@ -2036,29 +2036,47 @@ body {
   height: 100vh;
 }
 
+/* Ensure the navbar has proper positioning and z-index */
 .main-header {
-  min-height: 55px;
-  width: 100%;
-  background: #ffffff;
   position: fixed;
-  z-index: 1001;
+  width: 100%;
+  z-index: 1001; /* Already set in your CSS */
+  background: #ffffff;
   border-bottom: 1px solid #eee;
 }
-.main-header .logo-header {
-  float: left;
-  width: 260px;
+/* Fix for the existing navbar structure */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
   height: 55px;
-  line-height: 55px;
-  border-right: 1px solid #eee;
-  color: #333333;
-  z-index: 1001;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.logo-header {
   font-size: 18px;
   font-weight: 600;
-  padding-left: 25px;
-  padding-right: 25px;
-  z-index: 1001;
-  display: inline-block;
+  color: #575962;
 }
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.user-name {
+  font-weight: 600;
+}
+
+.user-role {
+  color: #777;
+  font-size: 13px;
+}
+
 .main-header .logo-header a.logo {
   color: #575962;
 }
@@ -2260,7 +2278,7 @@ body {
 }
 .footer .container-fluid {
   display: flex;
-  align-items: center;
+  align-items: left;
 }
 
 .la, .la-stack {
@@ -5664,17 +5682,12 @@ body {
 }
 
 /*     Navbar     */
+/* Adjust navbar item alignment */
 .navbar .navbar-nav .nav-item .nav-link {
+  line-height: 55px; /* Match navbar height */
+  padding: 0 20px 0 0; /* Adjust padding as needed */
   display: inline-block;
   vertical-align: middle;
-  color: #666;
-  line-height: 55px;
-  letter-spacing: 0.04em;
-  padding: 0 20px 0 0;
-  position: relative;
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
 }
 .navbar .navbar-nav .nav-item .nav-link i {
   font-size: 22px;
@@ -5682,9 +5695,12 @@ body {
   vertical-align: middle;
 }
 
+/* Ensure dropdown menus have proper positioning */
 .navbar-expand-lg .navbar-nav .dropdown-menu {
   left: auto;
   right: 0;
+  border: 1px solid rgba(120, 130, 140, 0.13);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
 }
 
 .dropdown-item {
@@ -6538,7 +6554,7 @@ body {
 }
 @media screen and (min-width: 992px) {
   .main-header .logo-header {
-    line-height: 52px;
+    line-height: px;
   }
 
   .sidebar .scroll-element {
@@ -6604,13 +6620,25 @@ body {
     position: relative;
     justify-content: center;
   }
-  .main-header .logo-header .navbar-toggler {
-    position: absolute;
-    top: auto;
-    height: 100%;
-    left: 15px;
-    opacity: 1;
+  /* Mobile menu toggle styles */
+.main-header .logo-header .navbar-toggler {
+  opacity: 1; /* Change from 0 to 1 to make it visible */
+  position: absolute;
+  left: 15px;
+  padding: 0;
+}
+
+/* Mobile menu styles */
+@media screen and (max-width: 991px) {
+  .sidebar {
+    transform: translate3d(-270px, 0, 0);
+    transition: all .5s;
   }
+  
+  .nav_open .sidebar {
+    transform: translate3d(0px, 0, 0);
+  }
+}
   .main-header .logo-header .more {
     opacity: 1;
     position: absolute;
