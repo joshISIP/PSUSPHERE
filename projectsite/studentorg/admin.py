@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import College, Program, Organization, Student, OrgMember  
+
+from .models import College, Program, Organization, Student, Orgmember
 
 admin.site.register(College)
 admin.site.register(Program)
@@ -8,24 +9,17 @@ admin.site.register(Organization)
 
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
-    list_display = ('student_id', 'lastname', 'middlename', 'program')
-    list_filter = ('program', )
-    search_fields = ('lastname', 'firstname', 'middlename', 'student_id')
-    ordering = ('lastname', 'student_id')
+    list_display = ("student_id","lastname", "firstname", "middlename", "program")
+    search_fields = ("lastname", "firstname",)
 
-@admin.register(OrgMember)
+@admin.register(Orgmember)
 class OrgMemberAdmin(admin.ModelAdmin):
-    list_display = ('student', 'organization', 'date_joined')
-    list_filter = ('organization', )
-    search_fields = ('student', 'organization')
-    ordering = ('student', 'organization')
+    list_display = ("student", "get_member_program", "organization", "date_joined",)
+    search_fields = ("student_lastname", "student_firstname",)
 
     def get_member_program(self, obj):
         try:
-            member = Student.objects.get(pk=obj.student_id)
+            member = Student.objects.get(id=obj.student_id)
             return member.program
         except Student.DoesNotExist:
             return None
-
-
-
